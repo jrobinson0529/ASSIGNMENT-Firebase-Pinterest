@@ -5,11 +5,11 @@ import { getBoards } from '../data/boardsData';
 import domEvents from '../domEvents';
 import boards from './boards';
 
-const startApp = () => {
+const startApp = (user) => {
   domBuilder();
-  domEvents();
+  domEvents(user.uid);
   boards();
-  getBoards().then((arr) => showBoards(arr));
+  getBoards(user.uid).then((arr) => showBoards(arr));
   logoutButton();
 };
 
