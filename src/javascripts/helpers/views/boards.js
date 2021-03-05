@@ -1,6 +1,6 @@
 const boards = () => {
   const domString = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Pinterest</a>
+  <a class="navbar-brand" href="#" id="board-view">Pinterest</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -10,7 +10,7 @@ const boards = () => {
     </div>
 </div>
 </nav>
-<h1 class="home-title">Boards</h1>`;
+<h1 class="home-title" id="home-title">Boards</h1>`;
   document.querySelector('#login-form-container').innerHTML = domString;
 };
 
