@@ -1,0 +1,14 @@
+const showBoards = (array) => {
+  document.querySelector('#boards-container').innerHTML = '';
+  array.forEach((board) => {
+    document.querySelector('#boards-container').innerHTML += `<div class="card board-card" style="width: 18rem;">
+    <img class="card-img-top" src="${board.image}" alt="Card image cap" id="board-card--${board.firebaseKey}">
+    <div class="card-body">
+      <h5 class="card-title">${board.title}</h5>
+      <p class="card-text">${board.firebaseKey}</p>
+    </div>
+  </div>`;
+  });
+};
+
+export default showBoards;
