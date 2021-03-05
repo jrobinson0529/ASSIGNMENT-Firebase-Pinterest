@@ -11,7 +11,7 @@ const showPins = (array) => {
         <div class="card-body">
           <h5 class="card-title">${pin.title}</h5>
           <p class="card-text">${pin.content}</p>
-          <button type="button" class="btn btn-danger" id="delete-btn--${pin.firebaseKey}--${pin.board_ID}">Delete Pin</button>
+          <button type="button" class="btn btn-danger" id="delete-pin--${pin.firebaseKey}--${pin.board_ID}">Delete Pin</button>
         </div>
       </div>
     </div>

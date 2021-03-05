@@ -8,6 +8,7 @@ import boards from './boards';
 const startApp = (user) => {
   domBuilder();
   domEvents(user.uid);
+  console.warn(user.uid);
   boards();
   getBoards(user.uid).then((arr) => showBoards(arr));
   logoutButton();

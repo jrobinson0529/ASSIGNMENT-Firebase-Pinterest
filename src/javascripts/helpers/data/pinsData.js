@@ -1,5 +1,6 @@
 import axios from 'axios';
 import firebaseConfig from '../apiKeys';
+import { getBoards } from './boardsData';
 
 const dbUrl = firebaseConfig.databaseURL;
 // GET PINS
@@ -14,5 +15,11 @@ const deletePins = (pinId, boardId) => new Promise((resolve, reject) => {
     .then(() => getPins(boardId).then((array) => resolve(array)))
     .catch((error) => reject(error));
 });
+// DELETE ALL PINS ASSOCIATED WITH A BOARD
+const deleteAllPins = (boardId, uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/pins/${boardId}.json`)
+    .then(() => getBoards(uid).then((array) => resolve(array)))
+    .catch((error) => reject(error));
+});
 
-export { deletePins, getPins };
+export { deletePins, getPins, deleteAllPins };
