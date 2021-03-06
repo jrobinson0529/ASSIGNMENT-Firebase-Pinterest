@@ -21,5 +21,12 @@ const deleteAllPins = (boardId, uid) => new Promise((resolve, reject) => {
     .then(() => getBoards(uid).then((array) => resolve(array)))
     .catch((error) => reject(error));
 });
+const getBoardPins = (boardId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins.json?orderBy="board_ID"&equalTo="${boardId}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
 
-export { deletePins, getPins, deleteAllPins };
+export {
+  deletePins, getPins, deleteAllPins, getBoardPins
+};
