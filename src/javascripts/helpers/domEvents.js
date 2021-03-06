@@ -1,5 +1,6 @@
 // import showPins from '../components/showPins';
 // import showBoards from '../components/showBoards';
+import addPinsForm from '../components/forms/addPinsForm';
 import printBoardTitle from '../components/printBoardTitle';
 import showBoards from '../components/showBoards';
 import showPins from '../components/showPins';
@@ -15,6 +16,7 @@ const domEvents = (uid) => {
       boardPinInfo(boardId).then((boardObject) => {
         printBoardTitle(boardObject.board);
         showPins(boardObject.pins);
+        addPinsForm();
       });
     }
     if (e.target.id.includes('board-view')) {
