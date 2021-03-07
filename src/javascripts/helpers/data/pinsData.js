@@ -26,6 +26,7 @@ const getBoardPins = (boardId) => new Promise((resolve, reject) => {
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
+// CREATE A PIN
 
 export {
   deletePins, getPins, deleteAllPins, getBoardPins

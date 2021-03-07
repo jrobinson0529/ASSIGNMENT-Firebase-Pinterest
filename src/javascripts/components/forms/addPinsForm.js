@@ -1,3 +1,5 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import selectBoard from './selectBoard';
 
 const addPinsForm = () => {
@@ -19,7 +21,7 @@ const addPinsForm = () => {
     <small id="contentHelp" class="form-text text-muted">Select a Board</small>
     <button type="submit" class="btn btn-primary" id="submit-pin">Submit</button>
   </form>`;
-  selectBoard();
+  selectBoard(firebase.auth().currentUser.uid);
 };
 
 export default addPinsForm;
