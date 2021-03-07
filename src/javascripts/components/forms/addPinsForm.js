@@ -5,7 +5,7 @@ import selectBoard from './selectBoard';
 const addPinsForm = () => {
   document.querySelector('#add-pin-form').innerHTML = `
   <form>
-      <div class="form-group">
+    <div class="form-group">
       <label for="pinTitle">Pin's Title</label>
       <input type="text" class="form-control" id="pinTitle" aria-describedby="title">
     </div>
