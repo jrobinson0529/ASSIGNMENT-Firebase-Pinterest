@@ -1,6 +1,9 @@
+import axios from 'axios';
+import firebaseConfig from '../apiKeys';
 import { deleteBoard, getSingleBoard } from './boardsData';
 import { deletePins, getBoardPins } from './pinsData';
 
+const dbUrl = firebaseConfig.databaseURL;
 const boardPinInfo = (boardId) => new Promise((resolve, reject) => {
   const boardPins = getBoardPins(boardId);
   const board = getSingleBoard(boardId);
@@ -17,5 +20,16 @@ const deleteBoardPins = (boardId, uid) => new Promise((resolve, reject) => {
     Promise.all(deleteAllPins).then(() => resolve(deleteBoard(boardId, uid)));
   }).catch((error) => reject(error));
 });
+// CREATE PIN THEN DISPLAY CHOSEN BOARD PINS TO DOM
+const createPin = (pinObject, boardId) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/pins.json`, pinObject)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/pins/${response.data.name}.json`, body)
+        .then(() => {
+          boardPinInfo(boardId).then((boardPinsObject) => resolve(boardPinsObject));
+        });
+    }).catch((error) => reject(error));
+});
 
-export { deleteBoardPins, boardPinInfo };
+export { deleteBoardPins, boardPinInfo, createPin };

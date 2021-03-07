@@ -1,9 +1,10 @@
 // import showPins from '../components/showPins';
 // import showBoards from '../components/showBoards';
+import addPinsForm from '../components/forms/addPinsForm';
 import printBoardTitle from '../components/printBoardTitle';
 import showBoards from '../components/showBoards';
 import showPins from '../components/showPins';
-import { boardPinInfo, deleteBoardPins } from './data/boardPinsData';
+import { boardPinInfo, createPin, deleteBoardPins } from './data/boardPinsData';
 import { getBoards } from './data/boardsData';
 import { deletePins } from './data/pinsData';
 
@@ -15,6 +16,7 @@ const domEvents = (uid) => {
       boardPinInfo(boardId).then((boardObject) => {
         printBoardTitle(boardObject.board);
         showPins(boardObject.pins);
+        addPinsForm();
       });
     }
     if (e.target.id.includes('board-view')) {
@@ -32,6 +34,20 @@ const domEvents = (uid) => {
         const boardId = e.target.id.split('--')[1];
         deleteBoardPins(boardId, uid).then((boardsArray) => showBoards(boardsArray));
       }
+    }
+    if (e.target.id.includes('submit-pin')) {
+      e.preventDefault();
+      const boardId = document.querySelector('#board').value;
+      const pinObject = {
+        title: document.querySelector('#pinTitle').value,
+        content: document.querySelector('#pinContent').value,
+        image: document.querySelector('#pinUrl').value,
+        board_ID: document.querySelector('#board').value
+      };
+      createPin(pinObject, boardId).then((boardPinsObject) => {
+        printBoardTitle(boardPinsObject.board);
+        showPins(boardPinsObject.pins);
+      });
     }
   });
 };
