@@ -31,5 +31,13 @@ const createPin = (pinObject, boardId) => new Promise((resolve, reject) => {
         });
     }).catch((error) => reject(error));
 });
+// UPDATE PIN
+const updatePin = (firebaseKey, pinObject) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/pins/${firebaseKey}.json`, pinObject)
+    .then(() => resolve(boardPinInfo(pinObject.board_ID)))
+    .catch((error) => reject(error));
+});
 
-export { deleteBoardPins, boardPinInfo, createPin };
+export {
+  deleteBoardPins, boardPinInfo, createPin, updatePin
+};
