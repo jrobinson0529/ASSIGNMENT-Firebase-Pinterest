@@ -26,8 +26,13 @@ const getBoardPins = (boardId) => new Promise((resolve, reject) => {
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
-// CREATE A PIN
+// GET SINGLE PIN
+const getSinglePin = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
 
 export {
-  deletePins, getPins, deleteAllPins, getBoardPins
+  deletePins, getPins, deleteAllPins, getBoardPins, getSinglePin
 };
