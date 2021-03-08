@@ -1,11 +1,14 @@
 // import showPins from '../components/showPins';
 // import showBoards from '../components/showBoards';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import addBoardForm from '../components/forms/addBoardsForm';
 import addPinsForm from '../components/forms/addPinsForm';
 import printBoardTitle from '../components/printBoardTitle';
 import showBoards from '../components/showBoards';
 import showPins from '../components/showPins';
 import { boardPinInfo, createPin, deleteBoardPins } from './data/boardPinsData';
-import { getBoards } from './data/boardsData';
+import { createBoard, getBoards } from './data/boardsData';
 import { deletePins } from './data/pinsData';
 
 const domEvents = (uid) => {
@@ -16,7 +19,6 @@ const domEvents = (uid) => {
       boardPinInfo(boardId).then((boardObject) => {
         printBoardTitle(boardObject.board);
         showPins(boardObject.pins);
-        addPinsForm();
       });
     }
     if (e.target.id.includes('board-view')) {
@@ -48,6 +50,21 @@ const domEvents = (uid) => {
         printBoardTitle(boardPinsObject.board);
         showPins(boardPinsObject.pins);
       });
+    }
+    if (e.target.id.includes('submit-board')) {
+      e.preventDefault();
+      const boardObj = {
+        title: document.querySelector('#boardTitle').value,
+        image: document.querySelector('#boardUrl').value,
+        uid: firebase.auth().currentUser.uid
+      };
+      createBoard(boardObj, uid).then((boardArray) => showBoards(boardArray));
+    }
+    if (e.target.id.includes('toggle-pin-form')) {
+      addPinsForm();
+    }
+    if (e.target.id.includes('toggle-board-form')) {
+      addBoardForm();
     }
   });
 };
