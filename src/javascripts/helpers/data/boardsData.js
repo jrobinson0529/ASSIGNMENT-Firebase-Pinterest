@@ -32,7 +32,14 @@ const createBoard = (boardObject, uid) => new Promise((resolve, reject) => {
         .catch((error) => reject(error));
     });
 });
+// SEARCH BOARDS
+const searchBoard = (uid, searchValue) => new Promise((resolve, reject) => {
+  getBoards(uid).then((response) => {
+    resolve(response.filter((element) => element.title.toLowerCase().includes(searchValue)));
+  })
+    .catch((error) => reject(error));
+});
 
 export {
-  getBoards, getSingleBoard, deleteBoard, createBoard
+  getBoards, getSingleBoard, deleteBoard, createBoard, searchBoard
 };

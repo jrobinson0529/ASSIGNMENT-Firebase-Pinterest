@@ -12,6 +12,9 @@ const boards = () => {
   <a class="navbar-brand" href="#" id="board-view">Pinterest</a>
   <a class="nav-link" href="#" id="toggle-pin-form">Create Pin</a>
   <a class="nav-link" href="#" id="toggle-board-form">Create Board</a>
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" id="board-search" type="search" placeholder="Search" aria-label="Search">
+  </form>
     <div id="logoutButton" class="ml-auto"></div>
     <div class="profile-image" style="background-image: url(${firebase.auth().currentUser.photoURL})"></div>
     </div>
