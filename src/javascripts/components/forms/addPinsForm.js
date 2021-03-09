@@ -20,6 +20,10 @@ const addPinsForm = () => {
       <input type="url" class="form-control" id="pinUrl">
     </div>
     <div id="select-board" class="form-group"></div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="public">
+      <label class="form-check-label" for="public">Public?</label>
+    </div>
     <button type="submit" class="btn btn-primary" id="submit-pin">Submit</button>
   </form>`;
   selectBoard('select-board', firebase.auth().currentUser.uid);

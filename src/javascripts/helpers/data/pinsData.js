@@ -32,7 +32,12 @@ const getSinglePin = (firebaseKey) => new Promise((resolve, reject) => {
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
+const getPublicPins = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins.json?orderBy="public"&equalTo=true`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
 
 export {
-  deletePins, getPins, deleteAllPins, getBoardPins, getSinglePin
+  deletePins, getPins, deleteAllPins, getBoardPins, getSinglePin, getPublicPins
 };
