@@ -19,10 +19,10 @@ const addPinsForm = () => {
       <input type="url" class="form-control" id="pinUrl">
     </div>
     <div id="select-board" class="form-group"></div>
-    <small id="contentHelp" class="form-text text-muted">Select a Board</small>
     <button type="submit" class="btn btn-primary" id="submit-pin">Submit</button>
   </form>`;
-  selectBoard(firebase.auth().currentUser.uid);
+  selectBoard('select-board', firebase.auth().currentUser.uid);
+  document.querySelector('#select-board').innerHTML += 'RANDOM';
 };
 
 export default addPinsForm;

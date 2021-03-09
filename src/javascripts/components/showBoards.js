@@ -5,7 +5,6 @@ const showBoards = (array) => {
     <img class="card-img-top" src="${board.image}" alt="Card image cap" id="board-card--${board.firebaseKey}">
     <div class="card-body">
       <h5 class="card-title">${board.title}</h5>
-      <p class="card-text">${board.firebaseKey}</p>
       <button type="button" class="btn btn-danger" id="delete-board--${board.firebaseKey}">Delete</button>
     </div>
   </div>`;

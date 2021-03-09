@@ -1,20 +1,48 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+$baseColor: #200d3f;
+$primaryTextColor: #DE354C;
+$secondaryColor: #f3f3f3;
+$secondaryTextColor: #932432;
 
 body {
-  background-color: antiquewhite;
-  color: brown;
+  background-color: $baseColor;
+  color: $baseColor;
   text-align: center;
   margin-top: 100px;
 }
+.navbar {
+  background-color: $secondaryColor;
+  .navbar-brand {
+    font-size: 1.5em;
+    color: $primaryTextColor;
+    font-family: 'Lobster', cursive;
+  }
+  .nav-link {
+    font-weight: 500;
+    font-size: 1.15em;
+    color: #3C1874;
+    text-decoration: none;
+  }
+  .nav-link:hover,
+  .navbar-brand:hover {
+    transition: color 0.5s;
+    color: $secondaryTextColor
+  }
+}
+
 #login-form-container {
+  color: $primaryTextColor;
   width: 100%;
   position: absolute;
   top: 0;
 }
-.nav-link {
-  text-decoration: none;
-  color: black;
+.home-title {
+  color: $primaryTextColor;
+  font-family: 'Lobster', cursive;
+  
 }
 .boards-container {
   width: 100%;
@@ -40,6 +68,7 @@ body {
   
 }
 form {
+  color: $primaryTextColor;
   width: 50%;
 }
 .form-group {
