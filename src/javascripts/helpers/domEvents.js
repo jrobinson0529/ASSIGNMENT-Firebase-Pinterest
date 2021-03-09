@@ -12,7 +12,7 @@ import showPins from '../components/showPins';
 import {
   boardPinInfo, createPin, deleteBoardPins, updatePin
 } from './data/boardPinsData';
-import { createBoard, getBoards } from './data/boardsData';
+import { createBoard, getBoards, searchBoard } from './data/boardsData';
 import { deletePins, getSinglePin } from './data/pinsData';
 
 const domEvents = (uid) => {
@@ -90,6 +90,13 @@ const domEvents = (uid) => {
     if (e.target.id.includes('toggle-board-form')) {
       addBoardForm();
     }
+    document.querySelector('#board-search').addEventListener('keyup', (event) => {
+      let searchValue = document.querySelector('#board-search').value;
+      searchValue = searchValue.toLowerCase();
+      if (event.keyCode === 13) {
+        searchBoard(uid, searchValue).then((arr) => showBoards(arr));
+      }
+    });
   });
 };
 
