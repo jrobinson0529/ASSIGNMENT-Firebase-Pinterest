@@ -15,11 +15,11 @@ const editPinModal = (pinObject) => {
               <label for="imageUrl">Enter Image URL</label>
               <input type="url" class="form-control" id="image" value="${pinObject.image}" required>
             </div>
-            <div id="select-board" class="form-group"></div>
+            <div id="select-board-edit" class="form-group"></div>
             <button type="submit" class="btn btn-primary" id="update-pin--${pinObject.firebaseKey}">Save changes</button>
           </form>
 `;
-  selectBoard(pinObject);
+  selectBoard('select-board-edit', pinObject);
 };
 
 export default editPinModal;

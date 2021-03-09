@@ -1,8 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import home from '../../helpers/views/home';
 
 const signMeOut = () => {
   firebase.auth().signOut();
+  home();
 };
 
 const logoutButton = () => {
