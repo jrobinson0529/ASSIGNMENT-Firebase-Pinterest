@@ -1,6 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=IBM+Plex+Serif&family=Lobster&display=swap');
 
 $baseColor: #200d3f;
 $primaryTextColor: #DE354C;
@@ -8,12 +8,17 @@ $secondaryColor: #f3f3f3;
 $secondaryTextColor: #932432;
 
 body {
+  font-family: 'IBM Plex Serif', serif;
+  font-weight: 700;
   background-color: $baseColor;
   color: $baseColor;
   text-align: center;
   margin-top: 100px;
 }
 .navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: $secondaryColor;
   .navbar-brand {
     font-size: 1.5em;
@@ -36,10 +41,11 @@ body {
 #login-form-container {
   color: $primaryTextColor;
   width: 100%;
-  position: absolute;
-  top: 0;
 }
 .home-title {
+  height: 2em;
+  font-size: 5em;
+  margin-top: 2em;
   color: $primaryTextColor;
   font-family: 'Lobster', cursive;
   
@@ -51,11 +57,18 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   .board-card {
+    height: 27em;
+    border: 2px solid #932433a8;
+    background-color: $secondaryColor;
     margin: 30px;
     img {
       cursor: pointer;
       width: 100%;
-      height: 50%;
+      height: 75%;
+    }
+    .card-body {
+     padding: 5px;
+     color: $baseColor;
     }
   }
   .pin-card {
