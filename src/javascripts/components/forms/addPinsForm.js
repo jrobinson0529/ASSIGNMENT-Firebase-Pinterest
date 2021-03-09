@@ -3,6 +3,7 @@ import 'firebase/auth';
 import selectBoard from './selectBoard';
 
 const addPinsForm = () => {
+  document.querySelector('#add-pin-form').innerHTML = '';
   document.querySelector('#home-title').innerHTML = 'Create a Pin!';
   document.querySelector('#boards-container').innerHTML = `
   <form>

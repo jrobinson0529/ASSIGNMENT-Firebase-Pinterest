@@ -84,7 +84,16 @@ form {
   color: $primaryTextColor;
   width: 50%;
 }
+.edit-pin-form {
+  width: 100%;
+}
 .form-group {
   text-align: center;
   width: 100%;
+}
+.profile-image {
+  border-radius: 50%;
+  background-position: center;
+  width: 40px;
+  height: 40px;
 }

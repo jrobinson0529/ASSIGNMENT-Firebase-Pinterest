@@ -2,7 +2,7 @@ import selectBoard from './selectBoard';
 
 const editPinModal = (pinObject) => {
   document.querySelector('#editPinModalBody').innerHTML = `
-          <form id="edit-pin-form-modal">
+          <form id="edit-pin-form-modal" class="edit-pin-form">
             <div class="form-group">
               <label for="title">Pin's Title</label>
               <input type="text" class="form-control" id="title" value="${pinObject.title}" required>
