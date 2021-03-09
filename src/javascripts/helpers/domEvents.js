@@ -46,7 +46,7 @@ const domEvents = (uid) => {
       });
     }
     if (e.target.id.includes('board-view')) {
-      document.querySelector('#home-title').innerHTML = 'Boards';
+      document.querySelector('#home-title').innerHTML = 'My Boards';
       getBoards(uid).then((array) => showBoards(array));
     }
     if (e.target.id.includes('delete-pin')) {
