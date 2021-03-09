@@ -1,3 +1,6 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 const boards = () => {
   const domString = `
   <nav class="navbar navbar-expand-lg">
@@ -10,6 +13,7 @@ const boards = () => {
   <a class="nav-link" href="#" id="toggle-pin-form">Create Pin</a>
   <a class="nav-link" href="#" id="toggle-board-form">Create Board</a>
     <div id="logoutButton" class="ml-auto"></div>
+    <div class="profile-image" style="background-image: url(${firebase.auth().currentUser.photoURL})"></div>
     </div>
 </div>
 </nav>
