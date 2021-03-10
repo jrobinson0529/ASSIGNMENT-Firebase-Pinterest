@@ -11,7 +11,7 @@ const home = () => {
 </div>
 </nav>
 <h1 class="home-title">Pinterest</h1>`;
-  document.querySelector('#boards-container').innerHTML = '';
+  document.querySelector('#app').innerHTML = '';
   document.querySelector('#login-form-container').innerHTML = domString;
 };
 
