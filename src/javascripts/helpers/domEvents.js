@@ -6,6 +6,8 @@ import addBoardForm from '../components/forms/addBoardsForm';
 import addPinsForm from '../components/forms/addPinsForm';
 import editPinModal from '../components/forms/editPinModal';
 import formModal from '../components/forms/formModal';
+import selectBoard from '../components/forms/selectBoard';
+import { pinCardComponent } from '../components/pinCardComponent';
 import printBoardTitle from '../components/printBoardTitle';
 import showBoards from '../components/showBoards';
 import showPins from '../components/showPins';
@@ -14,7 +16,10 @@ import {
   boardPinInfo, createPin, deleteBoardPins, updatePin
 } from './data/boardPinsData';
 import { createBoard, getBoards, searchBoard } from './data/boardsData';
-import { deletePins, getPublicPins, getSinglePin } from './data/pinsData';
+import {
+  copyPin,
+  deletePins, getPublicPins, getSinglePin
+} from './data/pinsData';
 
 const domEvents = (uid) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -99,7 +104,15 @@ const domEvents = (uid) => {
     }
     if (e.target.id.includes('add-pin')) {
       const firebaseKey = e.target.id.split('--')[1];
-      console.warn(`YOU WANT TO ADD THIS PIN? ${firebaseKey}`);
+      if (document.querySelector(`#select-board--${firebaseKey}`).innerHTML === '') {
+        selectBoard(`select-board--${firebaseKey}`);
+      } else {
+        getSinglePin(firebaseKey).then((pinObj) => {
+          copyPin(pinObj).then(() => {
+            document.querySelector(`#pin-card--${firebaseKey}`).innerHTML = pinCardComponent(pinObj);
+          });
+        });
+      }
     }
     document.querySelector('#board-search').addEventListener('keyup', (event) => {
       let searchValue = document.querySelector('#board-search').value;
