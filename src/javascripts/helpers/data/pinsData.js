@@ -32,7 +32,24 @@ const getSinglePin = (firebaseKey) => new Promise((resolve, reject) => {
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
+const getPublicPins = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins.json?orderBy="public"&equalTo=true`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+// COPY PINS
+const copyPin = (pinObject) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/pins.json`, pinObject)
+    .then((response) => {
+      const body = {
+        public: false,
+        firebaseKey: response.data.name,
+        board_ID: document.querySelector('#board').value
+      };
+      resolve(axios.patch(`${dbUrl}/pins/${response.data.name}.json`, body));
+    }).catch((error) => reject(error));
+});
 
 export {
-  deletePins, getPins, deleteAllPins, getBoardPins, getSinglePin
+  deletePins, getPins, deleteAllPins, getBoardPins, getSinglePin, getPublicPins, copyPin
 };

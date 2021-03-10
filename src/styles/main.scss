@@ -16,6 +16,7 @@ body {
   margin-top: 100px;
 }
 .navbar {
+  z-index: 1;
   position: fixed;
   top: 0;
   width: 100%;
@@ -26,7 +27,8 @@ body {
     font-family: 'Lobster', cursive;
   }
   .nav-link {
-    font-weight: 500;
+    margin: 0 10px;
+    font-weight: 700;
     font-size: 1.15em;
     color: #3C1874;
     text-decoration: none;
@@ -35,6 +37,9 @@ body {
   .navbar-brand:hover {
     transition: color 0.5s;
     color: $secondaryTextColor
+  }
+  .signed-in-as {
+    font-size: 10px;
   }
 }
 
@@ -48,7 +53,6 @@ body {
   margin-top: 2em;
   color: $primaryTextColor;
   font-family: 'Lobster', cursive;
-  
 }
 .boards-container {
   width: 100%;
@@ -73,9 +77,24 @@ body {
   }
   .pin-card {
     margin: 50px;
-    color: black;
+    color: #3C1874;
     img {
       width: 100%;
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-end;
+    }
+    .card-text {
+      margin-bottom: auto;
+      justify-self: self-start;
+    }
+    .pin-text-divider {
+      width: 100%;
+      height: .25px;
+      background-color:#200d3f48;
     }
   }
   
