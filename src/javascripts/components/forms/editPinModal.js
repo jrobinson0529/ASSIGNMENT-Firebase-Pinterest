@@ -15,6 +15,10 @@ const editPinModal = (pinObject) => {
               <label for="imageUrl">Enter Image URL</label>
               <input type="url" class="form-control" id="image" value="${pinObject.image}" required>
             </div>
+            <div class="form-group">
+              <label for="article">Add an article</label>
+              <input type="url" class="form-control" id="article" value="${pinObject.article}">
+            </div>
             <div id="select-board-edit" class="form-group"></div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" id="public">

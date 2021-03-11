@@ -76,6 +76,7 @@ const domEvents = (uid) => {
         content: document.querySelector('#pinContent').value,
         image: document.querySelector('#pinUrl').value,
         board_ID: boardId,
+        article: document.querySelector('#article').value,
         public: document.querySelector('#public').checked
       };
       createPin(pinObject, boardId).then((boardPinsObject) => {
