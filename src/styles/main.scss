@@ -111,8 +111,17 @@ form {
   width: 100%;
 }
 .profile-image {
+  cursor: pointer;
   border-radius: 50%;
   background-position: center;
   width: 40px;
   height: 40px;
+}
+#user-image-container {
+  width: 50px;
+}
+.public-pin-user-image {
+  cursor: pointer;
+  height: 50px;
+  border-radius: 50%;
 }

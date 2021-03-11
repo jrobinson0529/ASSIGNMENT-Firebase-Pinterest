@@ -19,7 +19,7 @@ const boards = () => {
           </form>
         </div>
         <div id="logoutButton" class="ml-auto"></div>
-        <div class="profile-image" style="background-image: url(${firebase.auth().currentUser.photoURL})"></div>
+        <div class="profile-image" style="background-image: url(${firebase.auth().currentUser.photoURL})" id="profile-page--${firebase.auth().currentUser.uid}"></div>
         <p class="signed-in-as">Signed in as ${firebase.auth().currentUser.displayName}</p>
         </div>
     </div>

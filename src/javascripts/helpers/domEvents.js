@@ -21,7 +21,7 @@ import {
   deletePins, getPublicPins, getSinglePin, searchPublicPins
 } from './data/pinsData';
 
-const domEvents = (uid) => {
+const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
     if (e.target.id.includes('edit-pin')) {
       const pinId = e.target.id.split('--')[1];
@@ -54,7 +54,7 @@ const domEvents = (uid) => {
     }
     if (e.target.id.includes('board-view')) {
       document.querySelector('#home-title').innerHTML = 'My Boards';
-      getBoards(uid).then((array) => showBoards(array));
+      getBoards(user.uid).then((array) => showBoards(array));
     }
     if (e.target.id.includes('delete-pin')) {
       const pinId = e.target.id.split('--')[1];
@@ -65,7 +65,7 @@ const domEvents = (uid) => {
       // eslint-disable-next-line no-alert
       if (window.confirm('Are you sure?')) {
         const boardId = e.target.id.split('--')[1];
-        deleteBoardPins(boardId, uid).then((boardsArray) => showBoards(boardsArray));
+        deleteBoardPins(boardId, user.uid).then((boardsArray) => showBoards(boardsArray));
       }
     }
     if (e.target.id.includes('submit-pin')) {
@@ -77,6 +77,11 @@ const domEvents = (uid) => {
         image: document.querySelector('#pinUrl').value,
         board_ID: boardId,
         article: document.querySelector('#article').value,
+        userData: {
+          photo: user.photoURL,
+          uid: user.uid,
+          name: user.displayName,
+        },
         public: document.querySelector('#public').checked
       };
       createPin(pinObject, boardId).then((boardPinsObject) => {
@@ -91,7 +96,7 @@ const domEvents = (uid) => {
         image: document.querySelector('#boardUrl').value,
         uid: firebase.auth().currentUser.uid
       };
-      createBoard(boardObj, uid).then((boardArray) => showBoards(boardArray));
+      createBoard(boardObj, user.uid).then((boardArray) => showBoards(boardArray));
     }
     if (e.target.id.includes('toggle-pin-form')) {
       addPinsForm();
@@ -115,13 +120,21 @@ const domEvents = (uid) => {
         });
       }
     }
+    if (e.target.id.includes('user-profile-btn')) {
+      const userID = e.target.id.split('--')[1];
+      console.warn(userID);
+    }
+    if (e.target.id.includes('profile-page')) {
+      const userID = e.target.id.split('--')[1];
+      console.warn(userID);
+    }
     document.querySelector('#board-search').addEventListener('keyup', (event) => {
       let searchValue = document.querySelector('#board-search').value;
       searchValue = searchValue.toLowerCase();
       if (event.keyCode === 13) {
         const view = document.querySelector('#home-title').innerHTML;
         if (view.toLowerCase().includes('my board')) {
-          searchBoard(uid, searchValue).then((arr) => showBoards(arr));
+          searchBoard(user.uid, searchValue).then((arr) => showBoards(arr));
         } else if (view.toLowerCase().includes('public pins')) {
           searchPublicPins(searchValue).then((pinArr) => showPublicPins(pinArr));
         }

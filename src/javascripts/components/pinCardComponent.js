@@ -9,6 +9,8 @@ const pinCardComponent = (pin) => `
           <h5 class="card-title">${pin.title}</h5>
           <hr class="pin-text-divider">
           <p class="card-text">${pin.content}</p>
+          <div id="user-image-container" class="mx-auto"><img src="${pin.userData.photo}" class="public-pin-user-image" alt="" id="user-profile-btn--${pin.userData.uid}"></img></div>
+          <p class="card-text my-3">Created by ${pin.userData.name.split(' ')[0]}</p>
           <button type="button" class="btn btn-primary" id="add-pin--${pin.firebaseKey}" data-toggle="modal" data-target="">Add</button><div id="select-board--${pin.firebaseKey}"></div>
         </div>
       </div>
