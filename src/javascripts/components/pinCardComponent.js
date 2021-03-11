@@ -2,7 +2,7 @@ const pinCardComponent = (pin) => `
   <div class="card mb-3 pin-card" style="width: 50rem; height: 30rem">
     <div class="row no-gutters h-100">
       <div class="col-md-4 h-100">
-        <img src="${pin.image}" alt="" class="h-100">
+        <a href="${pin.article}" target="_blank"><img src="${pin.image}" alt="" class="h-100"></a>
       </div>
       <div class="col-md-8 h-100">
         <div class="card-body">
