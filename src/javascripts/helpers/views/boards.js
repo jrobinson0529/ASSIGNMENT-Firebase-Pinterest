@@ -11,15 +11,21 @@ const boards = () => {
       <div class="navbar-nav w-100">
         <div class="nav-link-container d-flex w-100 justify-content-start">
           <a class="navbar-brand" href="#" id="public-pins-view">Pinterest</a>
-          <a class="nav-link" href="#" id="toggle-pin-form">Create Pin</a>
-          <a class="nav-link" href="#" id="toggle-board-form">Create Board</a>
-          <a class="nav-link" href="#" id="board-view">My Boards</a>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" id="board-search" type="search" placeholder="Search" aria-label="Search">
           </form>
         </div>
+        <div class="dropdown">
+          <a class="btn btn-secondary profile-image" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-image: url(${firebase.auth().currentUser.photoURL})">
+          </a>
+        <div class="dropdown-menu" aria-labelledby="profile-page--${firebase.auth().currentUser.uid}">
+        <a class="dropdown-item" href="#" id="toggle-pin-form">Create Pin</a>
+        <a class="dropdown-item" href="#" id="toggle-board-form">Create Board</a>
+        <a class="dropdown-item" href="#" id="board-view">My Boards</a>
+        <a class="dropdown-item" href="#" id="profile-page--${firebase.auth().currentUser.uid}">Profile</a>
+        </div>
+      </div>
         <div id="logoutButton" class="ml-auto"></div>
-        <div class="profile-image" style="background-image: url(${firebase.auth().currentUser.photoURL})" id="profile-page--${firebase.auth().currentUser.uid}"></div>
         <p class="signed-in-as">Signed in as ${firebase.auth().currentUser.displayName}</p>
         </div>
     </div>
