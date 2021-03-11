@@ -18,7 +18,7 @@ import {
 import { createBoard, getBoards, searchBoard } from './data/boardsData';
 import {
   copyPin,
-  deletePins, getPublicPins, getSinglePin
+  deletePins, getPublicPins, getSinglePin, searchPublicPins
 } from './data/pinsData';
 
 const domEvents = (uid) => {
@@ -119,7 +119,12 @@ const domEvents = (uid) => {
       let searchValue = document.querySelector('#board-search').value;
       searchValue = searchValue.toLowerCase();
       if (event.keyCode === 13) {
-        searchBoard(uid, searchValue).then((arr) => showBoards(arr));
+        const view = document.querySelector('#home-title').innerHTML;
+        if (view.toLowerCase().includes('my board')) {
+          searchBoard(uid, searchValue).then((arr) => showBoards(arr));
+        } else if (view.toLowerCase().includes('public pins')) {
+          searchPublicPins(searchValue).then((pinArr) => showPublicPins(pinArr));
+        }
       }
     });
   });

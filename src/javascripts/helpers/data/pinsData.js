@@ -49,7 +49,14 @@ const copyPin = (pinObject) => new Promise((resolve, reject) => {
       resolve(axios.patch(`${dbUrl}/pins/${response.data.name}.json`, body));
     }).catch((error) => reject(error));
 });
+// SEARCH PUBLIC PINS
+const searchPublicPins = (searchValue) => new Promise((resolve, reject) => {
+  getPublicPins().then((response) => {
+    resolve(response.filter((value) => value.content.toLowerCase().includes(searchValue) || value.title.toLowerCase().includes(searchValue)));
+  })
+    .catch((error) => reject(error));
+});
 
 export {
-  deletePins, getPins, deleteAllPins, getBoardPins, getSinglePin, getPublicPins, copyPin
+  deletePins, getPins, deleteAllPins, getBoardPins, getSinglePin, getPublicPins, copyPin, searchPublicPins
 };
