@@ -7,7 +7,7 @@ import showPublicPins from '../../components/showPublicPins';
 
 const startApp = (user) => {
   domBuilder();
-  domEvents(user.uid);
+  domEvents(user);
   boards();
   getPublicPins(user).then((arr) => showPublicPins(arr));
   logoutButton();
