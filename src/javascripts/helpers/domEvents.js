@@ -18,8 +18,10 @@ import {
 import { createBoard, getBoards, searchBoard } from './data/boardsData';
 import {
   copyPin,
-  deletePins, getPublicPins, getSinglePin, searchPublicPins
+  deletePins, getPublicPins, getSinglePin, getUsersPins, searchPublicPins
 } from './data/pinsData';
+import { getSingleUser } from './data/userData';
+import buildProfile from './views/profile';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -51,10 +53,6 @@ const domEvents = (user) => {
         printBoardTitle(boardObject.board);
         showPins(boardObject.pins);
       });
-    }
-    if (e.target.id.includes('board-view')) {
-      document.querySelector('#home-title').innerHTML = 'My Boards';
-      getBoards(user.uid).then((array) => showBoards(array));
     }
     if (e.target.id.includes('delete-pin')) {
       const pinId = e.target.id.split('--')[1];
@@ -105,7 +103,7 @@ const domEvents = (user) => {
       addBoardForm();
     }
     if (e.target.id.includes('public-pins-view')) {
-      document.querySelector('#home-title').innerHTML = 'Public pins';
+      document.querySelector('#home-title').innerHTML = '<h1 class="home-title">Public pins</h1>';
       getPublicPins().then((publicPinsArr) => showPublicPins(publicPinsArr));
     }
     if (e.target.id.includes('add-pin')) {
@@ -122,11 +120,15 @@ const domEvents = (user) => {
     }
     if (e.target.id.includes('user-profile-btn')) {
       const userID = e.target.id.split('--')[1];
-      console.warn(userID);
+      getUsersPins(userID).then((userPinArray) => {
+        const filteredArray = userPinArray.filter((element) => element.public);
+        showPublicPins(filteredArray);
+      });
+      getSingleUser(userID).then((userObject) => buildProfile(Object.values(userObject.data)[0]));
     }
     if (e.target.id.includes('profile-page')) {
       const userID = e.target.id.split('--')[1];
-      console.warn(userID);
+      getSingleUser(userID).then((userObject) => buildProfile(Object.values(userObject.data)[0])).then(getBoards(userID).then((array) => showBoards(array)));
     }
     document.querySelector('#board-search').addEventListener('keyup', (event) => {
       let searchValue = document.querySelector('#board-search').value;

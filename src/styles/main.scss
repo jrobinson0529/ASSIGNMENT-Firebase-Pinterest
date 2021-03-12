@@ -55,6 +55,7 @@ body {
   font-family: 'Lobster', cursive;
 }
 .boards-container {
+  padding: 50px 10px 100px 10px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -99,6 +100,20 @@ body {
   }
   
 }
+.title-container {
+  margin-top: 150px;
+  img {
+    border-radius: 50%;
+  }
+  h3 {
+    margin: 10px;
+    color: $secondaryColor;
+  }
+  p {
+    color: $secondaryColor
+  }
+}
+
 form {
   color: $primaryTextColor;
   width: 50%;
@@ -111,6 +126,7 @@ form {
   width: 100%;
 }
 .profile-image {
+  margin-right: 100px;
   cursor: pointer;
   border-radius: 50%;
   background-position: center;
@@ -127,4 +143,32 @@ form {
 }
 .dropdown {
   margin-right: 20px;
+}
+.profile-container {
+  height: 80vh;
+  margin-top: -100px;
+  padding: 50px;
+  border: $primaryTextColor 2px solid;
+  width: 75%;
+}
+.profile-card-body {
+    background: $secondaryColor;
+}
+.user-profile-card {
+  display: flex;
+  border: none;
+  background: $baseColor;
+  color: $secondaryColor;
+  .card-img-top {
+    align-self: center;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%
+  }
+  .card-body {
+    background: $baseColor;
+  }
+  .list-group-item {
+    background: $baseColor;
+  }
 }
