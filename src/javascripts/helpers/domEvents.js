@@ -128,6 +128,7 @@ const domEvents = (user) => {
     }
     if (e.target.id.includes('profile-page')) {
       const userID = e.target.id.split('--')[1];
+      document.querySelector('#boards-container').innerHTML = '';
       getSingleUser(userID).then((userObject) => buildProfile(Object.values(userObject.data)[0])).then(getBoards(userID).then((array) => showBoards(array)));
     }
     document.querySelector('#board-search').addEventListener('keyup', (event) => {
