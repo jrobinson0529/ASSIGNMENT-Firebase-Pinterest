@@ -1,4 +1,4 @@
-# Pinterest
+# Binterest
 
 Your team has been tasked with creating pinterest.  If you live under a rock and have never used pinterest before go figure out what it does. TLDR; users create boards and can pin urls to the boards
 

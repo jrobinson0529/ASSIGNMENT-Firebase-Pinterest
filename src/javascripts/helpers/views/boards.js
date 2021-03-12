@@ -10,7 +10,7 @@ const boards = () => {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="navbar-nav w-100">
         <div class="nav-link-container d-flex w-100 justify-content-start">
-          <a class="navbar-brand" href="#" id="public-pins-view">Pinterest</a>
+          <a class="navbar-brand" href="#" id="public-pins-view">Binterest</a>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" id="board-search" type="search" placeholder="Search" aria-label="Search">
           </form>
