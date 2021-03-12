@@ -1,5 +1,5 @@
 const showBoards = (array) => {
-  document.querySelector('#boards-container').innerHTML = '';
+  // document.querySelector('#boards-container').innerHTML = '';
   array.forEach((board) => {
     document.querySelector('#boards-container').innerHTML += `
       <div class="card board-card" style="width: 25rem;">

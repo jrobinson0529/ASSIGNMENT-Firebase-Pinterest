@@ -4,7 +4,7 @@ import selectBoard from './selectBoard';
 
 const addPinsForm = () => {
   document.querySelector('#add-pin-form').innerHTML = '';
-  document.querySelector('#home-title').innerHTML = 'Create a Pin!';
+  document.querySelector('#home-title').innerHTML = '<h1 class="home-title">Create a Pin!</h1>';
   document.querySelector('#boards-container').innerHTML = `
   <form>
     <div class="form-group">

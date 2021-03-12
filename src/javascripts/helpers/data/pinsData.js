@@ -56,7 +56,12 @@ const searchPublicPins = (searchValue) => new Promise((resolve, reject) => {
   })
     .catch((error) => reject(error));
 });
-
+// GET A USERS PINS
+const getUsersPins = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins.json?orderBy="userData/uid"&equalTo="${uid}"`)
+    .then((response) => resolve(Object.values((response.data))))
+    .then((error) => reject(error));
+});
 export {
-  deletePins, getPins, deleteAllPins, getBoardPins, getSinglePin, getPublicPins, copyPin, searchPublicPins
+  deletePins, getPins, deleteAllPins, getBoardPins, getSinglePin, getPublicPins, copyPin, searchPublicPins, getUsersPins
 };

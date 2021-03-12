@@ -1,5 +1,5 @@
 const addBoardForm = () => {
-  document.querySelector('#home-title').innerHTML = 'Create a Board!';
+  document.querySelector('#home-title').innerHTML = '<h1 class="home-title">Create a Board!</h1>';
   document.querySelector('#boards-container').innerHTML = `
   <form>
     <div class="form-group">

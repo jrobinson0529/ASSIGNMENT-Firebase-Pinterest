@@ -18,19 +18,17 @@ const boards = () => {
         <div class="dropdown">
           <a class="btn btn-secondary profile-image" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-image: url(${firebase.auth().currentUser.photoURL})">
           </a>
-        <div class="dropdown-menu" aria-labelledby="profile-page--${firebase.auth().currentUser.uid}">
-        <a class="dropdown-item" href="#" id="toggle-pin-form">Create Pin</a>
-        <a class="dropdown-item" href="#" id="toggle-board-form">Create Board</a>
-        <a class="dropdown-item" href="#" id="board-view">My Boards</a>
-        <a class="dropdown-item" href="#" id="profile-page--${firebase.auth().currentUser.uid}">Profile</a>
+        <div class="dropdown-menu" aria-labelledby="profile-page--${firebase.auth().currentUser.uid}" id="profile-dropdown">
+          <a class="dropdown-item" href="#" id="toggle-pin-form">Create Pin</a>
+          <a class="dropdown-item" href="#" id="toggle-board-form">Create Board</a>
+          <a class="dropdown-item" href="#" id="profile-page--${firebase.auth().currentUser.uid}">Profile</a>
         </div>
       </div>
         <div id="logoutButton" class="ml-auto"></div>
-        <p class="signed-in-as">Signed in as ${firebase.auth().currentUser.displayName}</p>
         </div>
     </div>
     </nav>
-    <h1 class="home-title" id="home-title">Public pins</h1>`;
+    <div class="title-container" id="home-title"><h1 class="home-title">Public pins</h1></div>`;
   document.querySelector('#login-form-container').innerHTML = domString;
 };
 
