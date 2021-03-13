@@ -138,8 +138,7 @@ const domEvents = (user) => {
         const view = document.querySelector('#home-title').innerHTML;
         if (view.toLowerCase().includes('<img')) {
           searchBoard(user.uid, searchValue).then((arr) => showBoards(arr));
-        }
-        if (view.toLowerCase().includes('public pins')) {
+        } else if (view.toLowerCase().includes('public pins')) {
           searchPublicPins(searchValue).then((pinArr) => showPublicPins(pinArr));
         }
       }
