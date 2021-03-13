@@ -136,9 +136,10 @@ const domEvents = (user) => {
       searchValue = searchValue.toLowerCase();
       if (event.keyCode === 13) {
         const view = document.querySelector('#home-title').innerHTML;
-        if (view.toLowerCase().includes('my board')) {
+        if (view.toLowerCase().includes('<img')) {
           searchBoard(user.uid, searchValue).then((arr) => showBoards(arr));
-        } else if (view.toLowerCase().includes('public pins')) {
+        }
+        if (view.toLowerCase().includes('public pins')) {
           searchPublicPins(searchValue).then((pinArr) => showPublicPins(pinArr));
         }
       }
