@@ -10,7 +10,7 @@ $secondaryTextColor: #932432;
 body {
   font-family: 'IBM Plex Serif', serif;
   font-weight: 700;
-  background-color: $baseColor;
+  background-color: rgb(21, 24, 28);
   color: $baseColor;
   text-align: center;
   margin-top: 100px;
@@ -77,9 +77,12 @@ body {
     }
   }
   .pin-card {
+    border-radius: 10px;
+    border: 1px solid black;
     margin: 50px;
     color: #3C1874;
     img {
+      border-radius: 10px;
       width: 100%;
     }
     .card-body {
